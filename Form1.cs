@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Simulation_Lab_4
@@ -18,7 +12,7 @@ namespace Simulation_Lab_4
         int cols;
         int rows;
         int currentGeneration;
-        
+
 
         public Form1()
         {
@@ -118,11 +112,11 @@ namespace Simulation_Lab_4
         {
             if (!timer1.Enabled) return;
 
-            if (e.Button== MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                var x= e.Location.X / resolution;
-                var y= e.Location.Y / resolution;
-                
+                var x = e.Location.X / resolution;
+                var y = e.Location.Y / resolution;
+
                 if (validateMousePosition(x, y)) field[x, y] = true;
             }
             if (e.Button == MouseButtons.Right)
