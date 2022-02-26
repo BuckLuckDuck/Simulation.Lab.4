@@ -42,20 +42,45 @@ namespace Simulation_Lab_4
             timer1.Start();
         }
 
+        private void nextGeneration()
+        {
+            graphics.Clear(Color.Black);
+            for (int x = 0; x < cols; x++)
+                for (int y = 0; y < rows; y++)
+                    if (field[x, y])
+                        graphics.FillRectangle(Brushes.Crimson, x * resolution, y * resolution, resolution, resolution);
+
+            pictureBox1.Refresh();
+        }
+
+        private int countNeighbours(int x, int y)
+        {
+
+            return 0;
+        }
+
+        private void stopGame()
+        {
+            if (!timer1.Enabled) return;
+            timer1.Stop();
+            nudResolution.Enabled = true;
+            nudDensity.Enabled = true;
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
+            startGame();
             
-            graphics.FillRectangle(Brushes.Crimson, 0, 0, resolution, resolution);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-
+            stopGame();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            nextGeneration();
         }
     }
 }
