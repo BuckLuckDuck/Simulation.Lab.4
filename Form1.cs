@@ -17,6 +17,8 @@ namespace Simulation_Lab_4
         bool[,] field;
         int cols;
         int rows;
+        int currentGeneration;
+        
 
         public Form1()
         {
@@ -26,12 +28,18 @@ namespace Simulation_Lab_4
         private void startGame()
         {
             if (timer1.Enabled) return;
+            currentGeneration = 0;
+            Text = $"Generation {currentGeneration}";
+
             nudResolution.Enabled = false;
             nudDensity.Enabled = false;
+
             resolution = (int)nudResolution.Value;
             rows = pictureBox1.Height / resolution;
             cols = pictureBox1.Width / resolution;
+
             field = new bool[cols, rows];
+
             Random random = new Random();
             for (int x = 0; x < cols; x++)
                 for (int y = 0; y < rows; y++)
@@ -63,6 +71,7 @@ namespace Simulation_Lab_4
                 }
             field = newField;
             pictureBox1.Refresh();
+            Text = $"Generation {++currentGeneration}";
         }
 
         private int countNeighbours(int x, int y)
@@ -104,6 +113,30 @@ namespace Simulation_Lab_4
         private void timer1_Tick(object sender, EventArgs e)
         {
             nextGeneration();
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!timer1.Enabled) return;
+
+            if (e.Button== MouseButtons.Left)
+            {
+                var x= e.Location.X / resolution;
+                var y= e.Location.Y / resolution;
+                
+                if (validateMousePosition(x, y)) field[x, y] = true;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                var x = e.Location.X / resolution;
+                var y = e.Location.Y / resolution;
+                if (validateMousePosition(x, y)) field[x, y] = false;
+            }
+        }
+
+        private bool validateMousePosition(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < cols && y < rows;
         }
     }
 }

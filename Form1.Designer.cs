@@ -80,6 +80,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(918, 564);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
             // label1
             // 
@@ -171,6 +172,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
@@ -180,7 +182,7 @@
             this.ClientSize = new System.Drawing.Size(1082, 568);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
-            this.Text = "Game of life";
+            this.Text = "Generaion 0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
