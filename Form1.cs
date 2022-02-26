@@ -67,7 +67,7 @@ namespace Simulation_Lab_4
                     else newField[x, y] = field[x, y];
 
                     if (hasLife)
-                        graphics.FillRectangle(Brushes.Crimson, x * resolution, y * resolution, resolution, resolution);
+                        graphics.FillRectangle(Brushes.Crimson, x * resolution, y * resolution, resolution - 1, resolution - 1);
                 }
             field = newField;
             pictureBox1.Refresh();
@@ -102,7 +102,6 @@ namespace Simulation_Lab_4
         private void btnStart_Click(object sender, EventArgs e)
         {
             startGame();
-            
         }
 
         private void btnStop_Click(object sender, EventArgs e)
